@@ -1,5 +1,5 @@
 # rpi3-bluetooth
-Raspberry Pi-3 on board Bluetooth example
+Raspberry Pi 3 on-board Bluetooth example
 
 This project enables bluetooth and demonstrates some simple commands to interract
 with a bluetooth device.
