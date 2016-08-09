@@ -58,7 +58,7 @@ handle: 0x0004, uuid: 00002803-0000-1000-8000-00805f9b34fb
 ```
 the output shows 4 characteristics found, we are going to write to the characteristic at `handle: 0x0004, uuid: 00002803-0000-1000-8000-00805f9b34fb`. At the prompt enter `char-write-req 04 01` to write a `1` to the characteristic:
 ```
-[EE:50:F0:F8:3C:FF][LE]> char-write-req 14 01
+[EE:50:F0:F8:3C:FF][LE]> char-write-req 04 01
 Characteristic value was written successfully
 ```
 finally we need to close the connection, enter `disconnect` at the prompt:
