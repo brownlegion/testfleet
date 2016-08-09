@@ -19,7 +19,7 @@ and push the code to the newly added remote:
 ```
 $ git push resin master
 ```
-It should take a few minutes for the code to push. Once the code has pushed the `scan.sh` script will enable the onboard Bluetooth, you should see this in your logs:
+It should take a few minutes for the code to push. Once the code has pushed the `scan.sh` script will enable the on-board Bluetooth, you should see this in your logs:
 
 ![Alt text](logs.png?raw=true "Logs")
 
