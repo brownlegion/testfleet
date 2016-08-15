@@ -1,0 +1,2 @@
+influxd &
+echo "Started influx"
