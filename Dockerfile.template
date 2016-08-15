@@ -17,7 +17,8 @@ RUN sed -i '1s#^#deb http://archive.raspberrypi.org/debian jessie main\n#' /etc/
 RUN apt-get update
 
 # install required packages
-RUN apt-get install bluez bluez-firmware
+#RUN apt-get install bluez bluez-firmware
+RUN apt-get install python3
 
 # define our working directory in the container
 WORKDIR usr/src/app
@@ -29,4 +30,4 @@ COPY . ./
 ENV INITSYSTEM=on
 
 # scan.sh will run when the container starts up on the device
-CMD ["bash", "scan.sh"]
+CMD ["python3", "startup.py"]
