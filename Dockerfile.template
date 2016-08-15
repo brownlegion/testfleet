@@ -19,6 +19,7 @@ RUN apt-get update
 # install required packages
 #RUN apt-get install bluez bluez-firmware
 RUN apt-get install python3
+RUN apt-get install scapy
 
 # define our working directory in the container
 WORKDIR usr/src/app
