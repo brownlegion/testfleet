@@ -1,19 +1,18 @@
 
 FROM resin/%%RESIN_MACHINE_NAME%%-python
 
-RUN apt-get update
-RUN apt-get install wget
+#RUN apt-get update
+#RUN apt-get install wget
 
 RUN wget http://archive.raspberrypi.org/debian/raspberrypi.gpg.key -O - | sudo apt-key add -
 
 RUN sed -i '1s#^#deb http://archive.raspberrypi.org/debian jessie main\n#' /etc/apt/sources.list
-RUN apt-get update
+#RUN apt-get update
 
 #RUN apt-get install bluez bluez-firmware
-RUN apt-get install python3
-RUN apt-get install scapy
+#RUN apt-get install python3
+#RUN apt-get install scapy
 RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_0.13.0_armhf.deb
-
 
 WORKDIR usr/src/app
 
@@ -22,5 +21,4 @@ COPY . ./
 ENV INITSYSTEM=on
 
 CMD ["python3", "startup.py"]
-CMD ["dpkg", "-i influxdb_0.13.0_armhf.deb "]
 CMD ["bash", "startinflux.sh"]
