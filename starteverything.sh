@@ -8,8 +8,8 @@ echo "influx is running"
 export PASSWD=${PASSWD:=root}
 #Set the root password
 echo "root:$PASSWD" | chpasswd
-python3 main.py
 #Spawn dropbear
 #dropbear -E -F &
 npm  install --global --production resin-cli
 resin login --credentials --email krishna.deoram@gmail.com --password krishna1
+python main.py
