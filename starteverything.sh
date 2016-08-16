@@ -10,8 +10,11 @@ export PASSWD=${PASSWD:=root}
 echo "root:$PASSWD" | chpasswd
 #Spawn dropbear
 #dropbear -E -F &
+echo "installing resin cli"
 npm  install --global --production resin-cli
+echo "finished install resin cli"
 resin login --credentials --email krishna.deoram@gmail.com --password krishna1
 python main.py
 influx -execute "create database beaconDatabase"
-echo "everything has now started"
+echo "created beaconDatabase on influx"
+echo "everything is daijoubu desu"
