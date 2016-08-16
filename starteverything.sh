@@ -16,10 +16,13 @@ echo "finished install resin cli"
 resin login --credentials --email krishna.deoram@gmail.com --password krishna1
 influx -execute "create database beaconDatabase"
 echo "created beaconDatabase on influx"
-#git clone https://github.com/brownlegion/beaconscanning.git
-#npm install --prefix list-beacons
+git clone https://github.com/brownlegion/list-beacons.git
+echo "cloned, now installing modules"
+npm install --prefix list-beacons
+echo "done installing, changing modes"
 chmod +x list-beacons/clear.sh
 chmod +x list-beacons/scan_once.sh
 chmod +x list-beacons/beacon_scan.sh
+echo "done changing modes"
 echo "everything is daijoubu desu"
 python main.py
