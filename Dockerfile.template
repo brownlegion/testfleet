@@ -2,17 +2,20 @@
 FROM resin/%%RESIN_MACHINE_NAME%%-python
 ENV INITSYSTEM on
 
+#Done to run the ssh server and ssh into the pi via the ip.
 RUN apt-get update && apt-get install -yq --no-install-recommends \
 	dropbear \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get install wget
 
+#Done just because Resin said so.
 RUN wget http://archive.raspberrypi.org/debian/raspberrypi.gpg.key -O - | sudo apt-key add -
 
 RUN sed -i '1s#^#deb http://archive.raspberrypi.org/debian jessie main\n#' /etc/apt/sources.list
 RUN apt-get update
 
+#We pick and choose what we want.
 #RUN apt-get install bluez bluez-firmware
 RUN apt-get install python3
 RUN apt-get install scapy
@@ -20,11 +23,14 @@ RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_0.13.0_armhf.deb
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 RUN apt-get install nodejs
 RUN apt-get install build-essential
-       
+
+#For the ssh server.       
 COPY ./requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
-       
+
+#Resin wants us to do this.       
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 
+#Run a script that will do everything via the command line.
 CMD ["bash", "starteverything.sh"]
