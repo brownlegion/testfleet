@@ -27,7 +27,4 @@ RUN pip install -r /requirements.txt
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 
-
-#CMD ["python3", "startup.py"]
 CMD ["bash", "starteverything.sh"]
-#CMD ["bash", "runinflux.sh"]
