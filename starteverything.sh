@@ -12,7 +12,7 @@ echo "root:$PASSWD" | chpasswd
 #dropbear -E -F &
 echo "installing resin cli"
 #maybe send all the message to stdout with > 1
-npm  install --global --production resin-cli > 1
+npm  install --global --production resin-cli
 echo "finished install resin cli"
 resin login --credentials --email krishna.deoram@gmail.com --password krishna1
 influx -execute "create database beaconDatabase"
