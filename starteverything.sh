@@ -11,12 +11,12 @@ echo "root:$PASSWD" | chpasswd
 #Spawn dropbear
 #dropbear -E -F &
 echo "installing resin cli"
-npm  install --global --production resin-cli > 0
+npm  install --global --production resin-cli
 echo "finished install resin cli"
 resin login --credentials --email krishna.deoram@gmail.com --password krishna1
 influx -execute "create database beaconDatabase"
 echo "created beaconDatabase on influx"
-git clone https://github.com/brownlegion/beaconscanning.git
-npm install --prefix list-beacons
+#git clone https://github.com/brownlegion/beaconscanning.git
+#npm install --prefix list-beacons
 echo "everything is daijoubu desu"
 python main.py
