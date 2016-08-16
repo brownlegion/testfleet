@@ -14,3 +14,4 @@ npm  install --global --production resin-cli
 resin login --credentials --email krishna.deoram@gmail.com --password krishna1
 python main.py
 influx -execute "create database beaconDatabase"
+echo "everything has now started"
