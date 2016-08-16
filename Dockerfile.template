@@ -15,19 +15,18 @@ RUN apt-get update
 
 #RUN apt-get install bluez bluez-firmware
 RUN apt-get install python3
-#RUN apt-get install scapy
-#RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_0.13.0_armhf.deb
-#RUN apt-get install openssh-server openssh-client
-#RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-#RUN apt-get install -y nodejs
-#RUN apt-get install -y build-essential
+RUN apt-get install scapy
+RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_0.13.0_armhf.deb
+RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+RUN apt-get install -y nodejs
+RUN apt-get install -y build-essential
        
 COPY ./requirements.txt /requirements.txt
 RUN pip install -r /requirements.txt
        
-WORKDIR usr/src/app
+COPY . /usr/src/app
+WORKDIR /usr/src/app
 
-COPY . ./
 
 #CMD ["python3", "startup.py"]
 CMD ["bash", "starteverything.sh"]
