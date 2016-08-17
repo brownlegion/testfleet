@@ -39,6 +39,12 @@ rm /influxdb_0.13.0_armhf.deb
 influx -execute "insert beacon,state=In major=6,minor=25,device=\"${HOSTNAME}\"" -database=beaconDatabase
 influx -execute "insert beacon,state=Out major=6,minor=26,device=\"${HOSTNAME}\"" -database=beaconDatabase
 
+echo "starting bluetooth scanning tool"
+#Start the bluetooth scanning thing.
+/usr/bin/hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -
+hciconfig hci0 up
+echo "bluetooth scanning configured (maybe)"
+
 #If everything made it up to here...
 echo "everything is daijoubu desu"
 #...run the ssh server via python.
