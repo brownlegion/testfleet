@@ -41,7 +41,13 @@ influx -execute "insert beacon,state=Out major=6,minor=26,device=\"${HOSTNAME}\"
 
 echo "starting bluetooth scanning tool"
 #Start the bluetooth scanning thing.
-/usr/bin/hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -
+echo "Attaching hci0..."
+if ! /usr/bin/hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -; then
+    echo "First try failed. Let's try another time."
+    /usr/bin/hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -
+fi
+
+echo "Bring hci0 up..."
 hciconfig hci0 up
 echo "bluetooth scanning configured (maybe)"
 
