@@ -52,6 +52,6 @@ rm /influxdb_0.13.0_armhf.deb
 #influx -execute "insert beacon,state=Out major=6,minor=26,device=\"${HOSTNAME}\"" -database=beaconDatabase
 
 #If everything made it up to here...
-echo "everything is daijoubu desu"
+echo "subete wa daijoubu desu"
 #...run the ssh server via python.
 python main.py
