@@ -24,6 +24,18 @@ resin login --credentials --email krishna.deoram@gmail.com --password krishna1
 influx -execute "create database beaconDatabase"
 echo "created beaconDatabase on influx"
 
+echo "starting bluetooth scanning tool"
+#Start the bluetooth scanning thing.
+echo "Attaching hci0..."
+if ! /usr/bin/hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -; then
+    echo "First try failed. Let's try another time."
+    /usr/bin/hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -
+fi
+
+echo "Bring hci0 up..."
+hciconfig hci0 up
+echo "bluetooth scanning configured (maybe)"
+
 #Get the stuff to bluetooth scan.
 git clone https://github.com/brownlegion/list-beacons.git
 echo "cloned, now installing modules..."
@@ -36,20 +48,8 @@ echo "done changing modes"
 
 #Influx tests, and get rid of debian file (because it takes up space).
 rm /influxdb_0.13.0_armhf.deb
-influx -execute "insert beacon,state=In major=6,minor=25,device=\"${HOSTNAME}\"" -database=beaconDatabase
-influx -execute "insert beacon,state=Out major=6,minor=26,device=\"${HOSTNAME}\"" -database=beaconDatabase
-
-echo "starting bluetooth scanning tool"
-#Start the bluetooth scanning thing.
-echo "Attaching hci0..."
-if ! /usr/bin/hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -; then
-    echo "First try failed. Let's try another time."
-    /usr/bin/hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -
-fi
-
-echo "Bring hci0 up..."
-hciconfig hci0 up
-echo "bluetooth scanning configured (maybe)"
+#influx -execute "insert beacon,state=In major=6,minor=25,device=\"${HOSTNAME}\"" -database=beaconDatabase
+#influx -execute "insert beacon,state=Out major=6,minor=26,device=\"${HOSTNAME}\"" -database=beaconDatabase
 
 #If everything made it up to here...
 echo "everything is daijoubu desu"
