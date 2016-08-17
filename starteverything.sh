@@ -34,10 +34,10 @@ chmod +x list-beacons/scan_once.sh
 chmod +x list-beacons/beacon_scan.sh
 echo "done changing modes"
 
-#Influx tests, and get rid of debian.
+#Influx tests, and get rid of debian file (because it takes up space).
 rm /influxdb_0.13.0_armhf.deb
-influx -execute "insert beacon,state=In major=6,minor=25,device="${HOSTNAME} -database=beaconDatabase
-influx -execute "insert beacon,state=Out major=6,minor=26,device="${HOSTNAME} -database=beaconDatabase
+influx -execute "insert beacon,state=In major=6,minor=25,device=\"${HOSTNAME}\"" -database=beaconDatabase
+influx -execute "insert beacon,state=Out major=6,minor=26,device=\"${HOSTNAME}\"" -database=beaconDatabase
 
 #If everything made it up to here...
 echo "everything is daijoubu desu"
