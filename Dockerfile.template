@@ -16,13 +16,13 @@ RUN sed -i '1s#^#deb http://archive.raspberrypi.org/debian jessie main\n#' /etc/
 RUN apt-get update
 
 #We pick and choose what we want.
-RUN apt-get install bluez bluez-firmware
 RUN apt-get install python3
 RUN apt-get install scapy
 RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_0.13.0_armhf.deb
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 RUN apt-get install nodejs
 RUN apt-get install build-essential
+RUN apt-get install bluez bluez-firmware
 
 #For the ssh server.       
 COPY ./requirements.txt /requirements.txt
