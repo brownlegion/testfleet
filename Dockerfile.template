@@ -1,6 +1,7 @@
 
 FROM resin/%%RESIN_MACHINE_NAME%%-python
 ENV INITSYSTEM on
+EVN PASSWD="hello"
 
 #Done to run the ssh server and ssh into the pi via the ip.
 RUN apt-get update && apt-get install -yq --no-install-recommends \
