@@ -6,7 +6,7 @@ python3 startup.py
 #Depackage the influx debian...
 dpkg -i /influxdb_0.13.0_armhf.deb
 #...then run it in the background.
-influxd &
+nohup influxd &
 echo "influx is running"
 
 #Password is set to ssh into.
