@@ -8,7 +8,7 @@ python3 startup.py
 dpkg -i /influxdb_0.13.0_armhf.deb
 #...then run it in the background.
 influxd &
-sleep(1)
+sleep 1
 echo "influx is running"
 
 #Password is set to ssh into.
