@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #Just to see if python3 was installed properly.
+echo "Starting up"
 python3 startup.py
 
 #Depackage the influx debian...
