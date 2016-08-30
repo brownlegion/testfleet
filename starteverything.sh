@@ -23,7 +23,7 @@ echo "root:$PASSWD" | chpasswd
 #resin login --credentials --email krishna.deoram@gmail.com --password krishna1
 
 #Install python modules (scapy, requests)
-pip install scapy-python
+pip install scapy-python3
 pip install requests
 
 #Create an Influx database.
