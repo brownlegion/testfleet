@@ -5,7 +5,7 @@
 #python3 startup.py
 
 #Depackage the influx debian...
-#dpkg -i /influxdb_0.13.0_armhf.deb
+dpkg -i /influxdb_0.13.0_armhf.deb
 #...then run it in the background.
 influxd &
 sleep 1
@@ -27,7 +27,7 @@ echo "root:$PASSWD" | chpasswd
 #pip install requests
 
 #Create an Influx database.
-python /data/startup.py
+python3 /data/startup.py
 influx -execute "create database beaconDatabase"
 echo "created beaconDatabase on influx"
 
