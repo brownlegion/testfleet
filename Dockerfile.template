@@ -17,8 +17,9 @@ RUN sed -i '1s#^#deb http://archive.raspberrypi.org/debian jessie main\n#' /etc/
 RUN apt-get update
 
 #We pick and choose what we want.
-RUN apt-get install python3
-RUN apt-get install scapy
+#RUN apt-get install python3
+#RUN apt-get install scapy
+RUN apt-get install python-pip
 RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_0.13.0_armhf.deb
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 RUN apt-get install nodejs
@@ -34,8 +35,7 @@ COPY . /usr/src/app
 WORKDIR /usr/src/app
 
 #Run a script that will do everything via the command line.
-RUN python /data/startup.py
-RUN pip install scapy-python3
+RUN pip install scapy-python
 RUN pip install requests
 RUN dpkg -i /influxdb_0.13.0_armhf.deb
 

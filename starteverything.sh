@@ -27,6 +27,7 @@ echo "root:$PASSWD" | chpasswd
 #pip install requests
 
 #Create an Influx database.
+python /data/startup.py
 influx -execute "create database beaconDatabase"
 echo "created beaconDatabase on influx"
 
