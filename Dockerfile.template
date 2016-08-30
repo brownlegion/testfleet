@@ -18,7 +18,7 @@ RUN apt-get update
 
 #We pick and choose what we want.
 RUN apt-get install python3
-#RUN apt-get install scapy
+RUN apt-get install scapy
 RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_0.13.0_armhf.deb
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 RUN apt-get install nodejs
@@ -35,7 +35,6 @@ WORKDIR /usr/src/app
 
 #Run a script that will do everything via the command line.
 RUN python3 /data/startup.py
-RUN apt-get install python3-pip
 RUN pip install scapy-python3
 RUN pip install requests
 RUN dpkg -i /influxdb_0.13.0_armhf.deb
