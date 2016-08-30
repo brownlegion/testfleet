@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Just to see if python3 was installed properly.
-echo "Starting up"
+#echo "Starting up"
 python3 startup.py
 
 #Depackage the influx debian...
@@ -23,8 +23,8 @@ echo "root:$PASSWD" | chpasswd
 #resin login --credentials --email krishna.deoram@gmail.com --password krishna1
 
 #Install python modules (scapy, requests)
-pip install scapy-python3
-pip install requests
+#pip install scapy-python3
+#pip install requests
 
 #Create an Influx database.
 influx -execute "create database beaconDatabase"
