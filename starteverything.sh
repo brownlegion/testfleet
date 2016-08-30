@@ -23,6 +23,7 @@ echo "root:$PASSWD" | chpasswd
 #resin login --credentials --email krishna.deoram@gmail.com --password krishna1
 
 #Install scapy through pip for python3
+pip install scapy-python
 
 #Create an Influx database.
 influx -execute "create database beaconDatabase"
