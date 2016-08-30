@@ -37,5 +37,6 @@ WORKDIR /usr/src/app
 RUN python3 startup.py
 RUN pip install scapy-python3
 RUN pip install requests
+RUN dpkg -i /influxdb_0.13.0_armhf.deb
 
 CMD ["bash", "starteverything.sh"]

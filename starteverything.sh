@@ -2,10 +2,10 @@
 
 #Just to see if python3 was installed properly.
 #echo "Starting up"
-python3 startup.py
+#python3 startup.py
 
 #Depackage the influx debian...
-dpkg -i /influxdb_0.13.0_armhf.deb
+#dpkg -i /influxdb_0.13.0_armhf.deb
 #...then run it in the background.
 influxd &
 sleep 1
