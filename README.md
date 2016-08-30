@@ -20,19 +20,19 @@ The scanning scripts are then copied from my (Krishna's) personal github because
 Once everything is daijoubu desu, the python script will run in order for us to ssh into the pi from our own terminal instead of using Resin.io's terminal (because their terminal is very slow). In order to ssh into it, environment variables need to be turned on through Docker, an environment variable called PASSWD needs to be set (done from the Resin app's dashboard) then exported (done in the bash script), and then the host name is root@\<device ip\> and the password will be whatever you set it as. Once you create the environment variable, the device will restart itself and redownload and install everything. This can't be avoided, just live with it.
 
 ```
-                 _______             _    _         _
-                (_______)           (_)  (_)       | |
-                 _   ___ _   _ ____  _    _  ___   | | ___ _   _ _____
-                | | (_  | | | |    \| |  | |/___)  | |/ _ \ | | | ___ |
-                | |___) | |_| | | | | |  | |___ |  | | |_| \ V /| ____|
-                 \_____/|____/|_|_|_|_|  |_(___/    \_)___/ \_/ |_____|
+                      _______             _    _         _
+                     (_______)           (_)  (_)       | |
+                      _   ___ _   _ ____  _    _  ___   | | ___ _   _ _____
+                     | | (_  | | | |    \| |  | |/___)  | |/ _ \ | | | ___ |
+                     | |___) | |_| | | | | |  | |___ |  | | |_| \ V /| ____|
+                      \_____/|____/|_|_|_|_|  |_(___/    \_)___/ \_/ |_____|
 
-                 _______             _    _         _  _    ___
-                (_______)           (_)  (_)       | |(_)  / __)
-                 _   ___ _   _ ____  _    _  ___   | | _ _| |__ _____
-                | | (_  | | | |    \| |  | |/___)  | || (_   __) ___ |
-                | |___) | |_| | | | | |  | |___ |  | || | | |  | ____|
-                 \_____/|____/|_|_|_|_|  |_(___/    \_)_| |_|  |_____|
+                      _______             _    _         _  _    ___
+                     (_______)           (_)  (_)       | |(_)  / __)
+                      _   ___ _   _ ____  _    _  ___   | | _ _| |__ _____
+                     | | (_  | | | |    \| |  | |/___)  | || (_   __) ___ |
+                     | |___) | |_| | | | | |  | |___ |  | || | | |  | ____|
+                      \_____/|____/|_|_|_|_|  |_(___/    \_)_| |_|  |_____|
                                  
                                        
                                                        
