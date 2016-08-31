@@ -15,7 +15,10 @@ fi
 #Depackage the influx debian...
 dpkg -i /influxdb_0.13.0_armhf.deb
 #...then run it in the background.
-cat influxdb.conf > /etc/influxdb/influxdb.conf
+if [ -f /usr/src/app/influxdb.conf ];
+  cat influxdb.conf > /etc/influxdb/influxdb.conf
+  rm /usr/src/app/influxdb.conf
+fi
 
 influxd &
 sleep 1
