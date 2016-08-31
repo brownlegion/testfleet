@@ -1,8 +1,16 @@
 #!/bin/bash
 
 #Just to see if python3 was installed properly.
-#echo "Starting up"
-#python3 startup.py
+echo "Starting up"
+if [ -f /Data/startup.py ];
+then
+ echo "File exists."
+ python3 /Data/startup.py
+else
+ echo "File doesn't exists."
+ cp startup.py /Data/
+ python3 /Data/startup.py
+fi
 
 #Depackage the influx debian...
 dpkg -i /influxdb_0.13.0_armhf.deb
@@ -27,7 +35,6 @@ echo "root:$PASSWD" | chpasswd
 #pip install requests
 
 #Create an Influx database.
-python3 /data/startup.py
 influx -execute "create database beaconDatabase"
 echo "created beaconDatabase on influx"
 
