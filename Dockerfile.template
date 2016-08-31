@@ -17,7 +17,7 @@ RUN sed -i '1s#^#deb http://archive.raspberrypi.org/debian jessie main\n#' /etc/
 RUN apt-get update
 
 #We pick and choose what we want.
-RUN apt-get install python3
+RUN apt-get install python3-pip
 #RUN apt-get install scapy
 #Run apt-get install python-scapy
 RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_0.13.0_armhf.deb
@@ -36,7 +36,7 @@ WORKDIR /usr/src/app
 
 #Run a script that will do everything via the command line.
 #RUN python3 /data/startup.py
-RUN pip install scapy3k
+RUN pip3 install scapy-python3
 RUN pip install requests
 
 CMD ["bash", "starteverything.sh"]
