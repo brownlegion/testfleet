@@ -2,14 +2,14 @@
 
 #Just to see if python3 was installed properly.
 echo "Starting up"
-if [ -f /Data/startup.py ];
+if [ -f /data/startup.py ];
 then
  echo "File exists."
- python3 /Data/startup.py
+ python3 /data/startup.py
 else
  echo "File doesn't exists."
- cp startup.py /Data/
- python3 /Data/startup.py
+ cp startup.py /data/
+ python3 /data/startup.py
 fi
 
 #Depackage the influx debian...
