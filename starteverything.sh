@@ -52,17 +52,22 @@ hciconfig hci0 up
 echo "bluetooth scanning configured (maybe)"
 
 #Get the stuff to bluetooth scan.
-git clone https://github.com/brownlegion/list-beacons.git
-echo "cloned, now installing modules..."
-npm install --prefix list-beacons
-echo "done installing, changing modes"
-chmod +x list-beacons/clear.sh
-chmod +x list-beacons/scan_once.sh
-chmod +x list-beacons/beacon_scan.sh
-echo "done changing modes"
-
+if [ -d /usr/src/app/list-beacons ]; then
+  echo "Already have beacon scanner"
+else
+  git clone https://github.com/brownlegion/list-beacons.git
+  echo "cloned, now installing modules..."
+  npm install --prefix list-beacons
+  echo "done installing, changing modes"
+  chmod +x list-beacons/clear.sh
+  chmod +x list-beacons/scan_once.sh
+  chmod +x list-beacons/beacon_scan.sh
+  echo "done changing modes"
+fi
 #Influx tests, and get rid of debian file (because it takes up space).
-rm /influxdb_0.13.0_armhf.deb
+if [ -f /influxdb_0.13.0_armhf.deb ]; then
+  rm /influxdb_0.13.0_armhf.deb
+fi
 #influx -execute "insert beacon,state=In major=6,minor=25,device=\"${HOSTNAME}\"" -database=beaconDatabase
 #influx -execute "insert beacon,state=Out major=6,minor=26,device=\"${HOSTNAME}\"" -database=beaconDatabase
 
