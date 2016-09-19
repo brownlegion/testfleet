@@ -75,6 +75,6 @@ fi
 /usr/src/app/list-beacons/beacon_scan.sh >> /usr/src/app/list-beacons/kdawg/influxlog.txt &
 
 #If everything made it up to here...
-echo "subete wa daijoubu desu"
+echo "Everything is going according to plan..."
 #...run the ssh server via python.
 python main.py
