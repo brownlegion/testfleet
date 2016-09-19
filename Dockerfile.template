@@ -6,6 +6,7 @@ ENV PASSWD="hello"
 #Done to run the ssh server and ssh into the pi via the ip.
 RUN apt-get update && apt-get install -yq --no-install-recommends \
 	dropbear \
+  python3-pip \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get install wget
@@ -17,14 +18,16 @@ RUN sed -i '1s#^#deb http://archive.raspberrypi.org/debian jessie main\n#' /etc/
 RUN apt-get update
 
 #We pick and choose what we want.
-RUN apt-get install python3-pip
+#RUN apt-get install python3-pip
 #RUN apt-get install scapy
 #Run apt-get install python-scapy
 RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_0.13.0_armhf.deb
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-RUN apt-get install nodejs
-RUN apt-get install build-essential
-RUN apt-get install bluez bluez-firmware
+RUN apt-get install nodejs \
+  build-essential \
+  bluez bluez-firmware
+#RUN apt-get install build-essential
+#RUN apt-get install bluez bluez-firmware
 
 #For the ssh server.       
 COPY ./requirements.txt /requirements.txt
