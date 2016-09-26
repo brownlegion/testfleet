@@ -31,9 +31,13 @@ echo "root:$PASSWD" | chpasswd
 
 #Install the Resin cli
 echo "installing resin cli..."
-npm  install --global --production resin-cli
-echo "finished install resin cli"
-resin login --credentials --email krishna.deoram@gmail.com --password krishna1
+if [ -d ~/.resin ]; then
+ echo "Already have resin cli installed."
+else
+ npm  install --global --production resin-cli
+ echo "finished install resin cli"
+ resin login --credentials --email krishna.deoram@gmail.com --password krishna1
+fi
 
 #Create an Influx database.
 influx -execute "create database beaconDatabase"
