@@ -30,10 +30,10 @@ export PASSWD=${PASSWD:=root}
 echo "root:$PASSWD" | chpasswd
 
 #Install the Resin cli
-#echo "installing resin cli..."
-#npm  install --global --production resin-cli
-#echo "finished install resin cli"
-#resin login --credentials --email krishna.deoram@gmail.com --password krishna1
+echo "installing resin cli..."
+npm  install --global --production resin-cli
+echo "finished install resin cli"
+resin login --credentials --email krishna.deoram@gmail.com --password krishna1
 
 #Create an Influx database.
 influx -execute "create database beaconDatabase"
