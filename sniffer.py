@@ -3,7 +3,7 @@ import json
 import os
 
 def monitor(packet):
- if "192.168.128.230" in packet:
+ if IP in packet and packet[IP].src == "192.168.128.230":
   #packetlist.append(packet)
   string = json.dumps(str(packet.load))
   #string = str(string[3:-2])
