@@ -81,4 +81,5 @@ fi
 #If everything made it up to here...
 echo "Everything is going according to plan..."
 #...run the ssh server via python.
-python main.py
+python main.py &
+python3 sniffer.py &
