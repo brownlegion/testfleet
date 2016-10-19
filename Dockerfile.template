@@ -21,7 +21,7 @@ RUN apt-get update
 #RUN apt-get install python3-pip
 #RUN apt-get install scapy
 #Run apt-get install python-scapy
-#RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_0.13.0_armhf.deb
+RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_0.13.0_armhf.deb
 #RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 #RUN apt-get install nodejs \
 #  build-essential \
