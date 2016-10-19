@@ -1,5 +1,5 @@
 #!/bin/bash
-pkill beacon_scan.sh
+#pkill beacon_scan.sh
 #Just to see if python3 was installed properly.
 echo "Starting up"
 if [ -f /data/startup.py ];
@@ -13,16 +13,16 @@ else
 fi
 
 #Depackage the influx debian...
-dpkg -i /influxdb_0.13.0_armhf.deb
+#dpkg -i /influxdb_0.13.0_armhf.deb
 #...then run it in the background.
-if [ -f /usr/src/app/influxdb.conf ]; then
-  cat influxdb.conf > /etc/influxdb/influxdb.conf
-  rm /usr/src/app/influxdb.conf
-fi
+#if [ -f /usr/src/app/influxdb.conf ]; then
+#  cat influxdb.conf > /etc/influxdb/influxdb.conf
+#  rm /usr/src/app/influxdb.conf
+#fi
 
-influxd &
-sleep 1
-echo "influx is running"
+#influxd &
+#sleep 1
+#echo "influx is running"
 
 #Password is set to ssh into.
 export PASSWD=${PASSWD:=root}
@@ -40,38 +40,38 @@ echo "root:$PASSWD" | chpasswd
 #fi
 
 #Create an Influx database.
-influx -execute "create database beaconDatabase"
-echo "created beaconDatabase on influx"
+#influx -execute "create database beaconDatabase"
+#echo "created beaconDatabase on influx"
 
-echo "starting bluetooth scanning tool"
+#echo "starting bluetooth scanning tool"
 #Start the bluetooth scanning thing.
-echo "Attaching hci0..."
-if ! /usr/bin/hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -; then
-    echo "First try failed. Let's try another time."
-    /usr/bin/hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -
-fi
+#echo "Attaching hci0..."
+#if ! /usr/bin/hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -; then
+#    echo "First try failed. Let's try another time."
+#    /usr/bin/hciattach /dev/ttyAMA0 bcm43xx 921600 noflow -
+#fi
 
-echo "Bring hci0 up..."
-hciconfig hci0 up
-echo "bluetooth scanning configured (maybe)"
+#echo "Bring hci0 up..."
+#hciconfig hci0 up
+#echo "bluetooth scanning configured (maybe)"
 
 #Get the stuff to bluetooth scan.
-if [ -d /usr/src/app/list-beacons ]; then
-  echo "Already have beacon scanner"
-else
-  git clone https://github.com/brownlegion/list-beacons.git
-  echo "cloned, now installing modules..."
-  npm install --prefix list-beacons
-  echo "done installing, changing modes"
-  chmod +x list-beacons/clear.sh
-  chmod +x list-beacons/scan_once.sh
-  chmod +x list-beacons/beacon_scan.sh
-  echo "done changing modes"
-fi
+#if [ -d /usr/src/app/list-beacons ]; then
+#  echo "Already have beacon scanner"
+#else
+#  git clone https://github.com/brownlegion/list-beacons.git
+#  echo "cloned, now installing modules..."
+#  npm install --prefix list-beacons
+#  echo "done installing, changing modes"
+#  chmod +x list-beacons/clear.sh
+#  chmod +x list-beacons/scan_once.sh
+#  chmod +x list-beacons/beacon_scan.sh
+#  echo "done changing modes"
+#fi
 #Influx tests, and get rid of debian file (because it takes up space).
-if [ -f /influxdb_0.13.0_armhf.deb ]; then
-  rm /influxdb_0.13.0_armhf.deb
-fi
+#if [ -f /influxdb_0.13.0_armhf.deb ]; then
+#  rm /influxdb_0.13.0_armhf.deb
+#fi
 #influx -execute "insert beacon,state=In major=6,minor=25,device=\"${HOSTNAME}\"" -database=beaconDatabase
 #influx -execute "insert beacon,state=Out major=6,minor=26,device=\"${HOSTNAME}\"" -database=beaconDatabase
 
