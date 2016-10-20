@@ -6,12 +6,13 @@ import argparse
 def monitor(packet):
  if IP in packet and packet[IP].src == str(address):
   #packetlist.append(packet)
+  count += 1
   string = json.dumps(str(packet.load))
   timestamp = str(string[3:-2])
   nanoseconds = int((float(timestamp))*1000000000)
   #difference = int(float(time.time())*1000000000) - nanoseconds
   #os.system("curl -i -XPOST 'http://localhost:8086/write?db=networkDatabase' --data-binary 'icmp,type=timestamps difference="+str(difference)+" "+str(nanoseconds)+"'")
-  print(str(nanoseconds))
+  print("Packet: " + str(count) + " Time: " + str(nanoseconds))
   #print(packet.show())
 
 #packetlist = []
@@ -26,6 +27,7 @@ contents = json.loads(file.read())
 file.close()
 ip = contents[hostname]
 address = ip['ip']
+count = 0
 #print(address)
 
 sniff(prn=monitor, store=0)
