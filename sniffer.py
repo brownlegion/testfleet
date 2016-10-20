@@ -8,10 +8,10 @@ def monitor(packet):
   string = json.dumps(str(packet.load))
   timestamp = str(string[3:-2])
   nanoseconds = int((float(timestamp))*1000000000)
-  difference = int(float(time.time())*1000000000) - nanoseconds
-  os.system("curl -i -XPOST 'http://localhost:8086/write?db=networkDatabase' --data-binary 'icmp,type=timestamps difference="+str(difference)+" "+str(nanoseconds)+"'")
-  #print(string)
+  #difference = int(float(time.time())*1000000000) - nanoseconds
+  #os.system("curl -i -XPOST 'http://localhost:8086/write?db=networkDatabase' --data-binary 'icmp,type=timestamps difference="+str(difference)+" "+str(nanoseconds)+"'")
+  print(str(nanoseconds))
   #print(packet.show())
 
-packetlist = []
+#packetlist = []
 sniff(prn=monitor)
