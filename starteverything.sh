@@ -13,16 +13,16 @@ else
 fi
 
 #Depackage the influx debian...
-dpkg -i /influxdb_0.13.0_armhf.deb
+#dpkg -i /influxdb_0.13.0_armhf.deb
 #...then run it in the background.
-if [ -f /usr/src/app/influxdb.conf ]; then
-  cat influxdb.conf > /etc/influxdb/influxdb.conf
-  rm /usr/src/app/influxdb.conf
-fi
+#if [ -f /usr/src/app/influxdb.conf ]; then
+#  cat influxdb.conf > /etc/influxdb/influxdb.conf
+#  rm /usr/src/app/influxdb.conf
+#fi
 
-influxd &
-sleep 1
-echo "influx is running"
+#influxd &
+#sleep 1
+#echo "influx is running"
 
 #Password is set to ssh into.
 export PASSWD=${PASSWD:=root}
@@ -42,8 +42,8 @@ echo "root:$PASSWD" | chpasswd
 #Create an Influx database.
 #influx -execute "create database beaconDatabase"
 #echo "created beaconDatabase on influx"
-influx -execute "create database networkDatabase"
-echo "Created networkDatabase on Influx"
+#influx -execute "create database networkDatabase"
+#echo "Created networkDatabase on Influx"
 
 #echo "starting bluetooth scanning tool"
 #Start the bluetooth scanning thing.
@@ -71,9 +71,9 @@ echo "Created networkDatabase on Influx"
 #  echo "done changing modes"
 #fi
 #Influx tests, and get rid of debian file (because it takes up space).
-if [ -f /influxdb_0.13.0_armhf.deb ]; then
-  rm /influxdb_0.13.0_armhf.deb
-fi
+#if [ -f /influxdb_0.13.0_armhf.deb ]; then
+#  rm /influxdb_0.13.0_armhf.deb
+#fi
 #influx -execute "insert beacon,state=In major=6,minor=25,device=\"${HOSTNAME}\"" -database=beaconDatabase
 #influx -execute "insert beacon,state=Out major=6,minor=26,device=\"${HOSTNAME}\"" -database=beaconDatabase
 
@@ -84,4 +84,4 @@ fi
 echo "Everything is going according to plan..."
 #...run the ssh server via python.
 python main.py &
-python3 sniffer.py
+python3 sniffer.py --hostname $HOSTNAME

@@ -3,7 +3,7 @@ import json
 import os
 
 def monitor(packet):
- if IP in packet and packet[IP].src == "192.168.128.230":
+ if IP in packet and packet[IP].src == str(address):
   #packetlist.append(packet)
   string = json.dumps(str(packet.load))
   timestamp = str(string[3:-2])
@@ -14,4 +14,16 @@ def monitor(packet):
   #print(packet.show())
 
 #packetlist = []
+
+parser = argparse.ArgumentParser(description="Scan for packets from a specified IP given the hostname.")
+parser.add_argument("--hostname", nargs=1, type=str)
+arguments = parser.parse_args()
+hostname = arguments.hostname[0]
+file = open("/usr/src/app/devices.json", "r")
+contents = json.loads(file.read())
+file.close()
+ip = contents[hostname]
+address = ip['ip']
+#print(address)
+
 sniff(prn=monitor, store=0)
