@@ -3,6 +3,8 @@ import json
 import os
 import argparse
 
+count = 0
+
 def monitor(packet):
  if IP in packet and packet[IP].src == str(address):
   #packetlist.append(packet)
@@ -27,7 +29,6 @@ contents = json.loads(file.read())
 file.close()
 ip = contents[hostname]
 address = ip['ip']
-count = 0
 #print(address)
 
 sniff(prn=monitor, store=0)
