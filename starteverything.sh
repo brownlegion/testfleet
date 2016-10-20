@@ -5,7 +5,7 @@ echo "Starting up"
 if [ -f /data/startup.py ];
 then
  echo "File exists."
- python3 /data/startup.py
+ #python3 /data/startup.py
 else
  echo "File doesn't exists."
  cp startup.py /data/

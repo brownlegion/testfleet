@@ -14,4 +14,4 @@ def monitor(packet):
   #print(packet.show())
 
 #packetlist = []
-sniff(prn=monitor)
+sniff(prn=monitor, store=0)
