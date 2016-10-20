@@ -20,6 +20,7 @@ parser = argparse.ArgumentParser(description="Scan for packets from a specified 
 parser.add_argument("--hostname", nargs=1, type=str)
 arguments = parser.parse_args()
 hostname = arguments.hostname[0]
+hostname = hostname[:-8]
 file = open("/usr/src/app/devices.json", "r")
 contents = json.loads(file.read())
 file.close()
