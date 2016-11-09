@@ -9,13 +9,12 @@ def monitor(packet):
 	if IP in packet and ICMP in packet and packet[IP].src == str(address):
 		file = open("/data/IXIA.txt", "a")
 		if packet[ICMP].type == 8: #echo-request
-			#print(str(binascii.hexlify(packet.load)))
 			beacon = str(binascii.hexlify(packet.load))[2:-1]
-   			uuid = beacon[:-8]
-   			major = beacon[-8:-4]
-   			minor = beacon[-4:]
-   			#file.write(str(time.strftime("%a, %d %b %Y %H:%M:%S", time.localtime(time.time()))) + "Echo stuff")
-   			print ("UUID: " + uuid + ", Major: " + major + ", Minor: " + minor)
+			uuid = beacon[:-8]
+			major = beacon[-8:-4]
+			minor = beacon[-4:]
+			#file.write(str(time.strftime("%a, %d %b %Y %H:%M:%S", time.localtime(time.time()))) + "Echo stuff")
+			print ("UUID: " + uuid + ", Major: " + major + ", Minor: " + minor)
 		elif packet[ICMP].type == 13: #timestamp-request
 			print("ts_ori=" + str(packet[ICMP].ts_ori) + "ms ts_rx=" + str(packet[ICMP].ts_rx) + "ms ts_tx=" + str(packet[ICMP].ts_tx) + "ms")
 			#file.write(str(time.strftime("%a, %d %b %Y %H:%M:%S", time.localtime(time.time()))) + "Timestamp stuff")
