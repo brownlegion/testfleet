@@ -10,7 +10,7 @@ def monitor(packet):
 		file = open("/data/IXIA.txt", "a")
 		if packet[ICMP].type == 8: #echo-request
 			beacon = str(binascii.hexlify(packet.load))[2:-1]
-			beacon = beacon[:20]
+			beacon = beacon[:40]
 			uuid = beacon[:-8]
 			major = str(int(beacon[-8:-4], 16))
 			minor = str(int(beacon[-4:], 16))
