@@ -94,4 +94,4 @@ echo "root:$PASSWD" | chpasswd
 echo "Everything is going according to plan..."
 #...run the ssh server via python.
 python main.py &
-python3 reader.py --hostname $HOSTNAME
+bash -c "exec -a packet_scanner python3 reader.py --hostname $HOSTNAME"
