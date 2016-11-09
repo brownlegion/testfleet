@@ -13,13 +13,13 @@ else
  python3 /data/startup.py
 fi
 
-if [ -f /data/IXIA.log ];
+if [ -f /data/IXIA.txt ];
 then
  echo "Log exists."
 else
  echo "Log doesn't exists."
- cp IXIA.log /data/
- rm IXIA.log
+ cp IXIA.txt /data/
+ rm IXIA.txt
 fi
 
 #Depackage the influx debian...

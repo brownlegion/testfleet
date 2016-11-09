@@ -7,7 +7,7 @@ import time
 
 def monitor(packet):
 	if IP in packet and ICMP in packet and packet[IP].src == str(address):
-		file = open("/data/IXIA.log", "a")
+		file = open("/data/IXIA.txt", "a")
 		if packet[ICMP].type == 8: #echo-request
 			#print(str(binascii.hexlify(packet.load)))
 			#beacon = str(binascii.hexlify(packet.load))[2:-1]
