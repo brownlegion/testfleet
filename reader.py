@@ -13,11 +13,11 @@ def monitor(packet):
 			uuid = beacon[:-8]
 			major = str(int(beacon[-8:-4], 16))
 			minor = str(int(beacon[-4:], 16))
-			file.write(str(time.strftime("%a, %d %b %Y %H:%M:%S", time.localtime(time.time()))) + ": " + "UUID: " + uuid + ", Major: " + major + ", Minor: " + minor + "\n")
+			file.write(str(time.time()*1000000)[:-2] + ": " + "UUID: " + uuid + ", Major: " + major + ", Minor: " + minor + "\n")
 			print ("UUID: " + uuid + ", Major: " + major + ", Minor: " + minor)
 		elif packet[ICMP].type == 13: #timestamp-request
 			print("ts_ori=" + str(packet[ICMP].ts_ori) + "ms ts_rx=" + str(packet[ICMP].ts_rx) + "ms ts_tx=" + str(packet[ICMP].ts_tx) + "ms")
-			file.write(str(time.strftime("%a, %d %b %Y %H:%M:%S", time.localtime(time.time()))) + ": " + "ts_ori=" + str(packet[ICMP].ts_ori) + ", ts_tx=" + str(packet[ICMP].ts_tx) + ", ts_rx=" + str(packet[ICMP].ts_rx) + "\n")
+			file.write(str(time.time()*1000000)[:-2] + ": " + "ts_ori=" + str(packet[ICMP].ts_ori) + ", ts_tx=" + str(packet[ICMP].ts_tx) + ", ts_rx=" + str(packet[ICMP].ts_rx) + "\n")
 		file.close()
 
 parser = argparse.ArgumentParser(description="Scan for packets from a specified IP given the hostname.")
