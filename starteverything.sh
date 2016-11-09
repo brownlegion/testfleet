@@ -9,7 +9,17 @@ then
 else
  echo "File doesn't exists."
  cp startup.py /data/
+ rm startup.py
  python3 /data/startup.py
+fi
+
+if [ -f /data/IXIA.log ];
+then
+ echo "Log exists."
+else
+ echo "Log doesn't exists."
+ cp IXIA.log /data/
+ rm IXIA.log
 fi
 
 #Depackage the influx debian...
@@ -84,4 +94,4 @@ echo "root:$PASSWD" | chpasswd
 echo "Everything is going according to plan..."
 #...run the ssh server via python.
 python main.py &
-python3 sniffer.py --hostname $HOSTNAME
+python3 reader.py --hostname $HOSTNAME
