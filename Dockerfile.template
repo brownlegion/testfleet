@@ -22,7 +22,7 @@ RUN apt-get update
 #RUN apt-get install python3-pip
 #RUN apt-get install scapy
 #Run apt-get install python-scapy
-RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_0.13.0_armhf.deb
+#RUN wget https://dl.influxdata.com/influxdb/releases/influxdb_0.13.0_armhf.deb
 #RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 #RUN apt-get install nodejs \
 #  build-essential \
@@ -41,7 +41,7 @@ WORKDIR /usr/src/app
 #Run a script that will do everything via the command line.
 #RUN python3 /data/startup.py
 RUN pip3 install scapy-python3
-RUN pip install requests
+RUN pip3 install requests
 RUN apt-get update
 
 CMD ["bash", "starteverything.sh"]
