@@ -41,7 +41,7 @@ WORKDIR /usr/src/app
 #Run a script that will do everything via the command line.
 #RUN python3 /data/startup.py
 RUN pip3 install scapy-python3
-RUN pip3 install requests
+RUN apt-get install python3-requests
 RUN apt-get update
 
 CMD ["bash", "starteverything.sh"]
