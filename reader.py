@@ -15,11 +15,11 @@ def monitor(packet):
 			uuid = beacon[:-8]
 			major = str(int(beacon[-8:-4], 16))
 			minor = str(int(beacon[-4:], 16))
-			os.system("curl -i -XPOST 'http://138.197.134.87:8086/write?db=cengn_11_11_2016' --data-binary 'echo,device=" + str(hostname) + " uuid=\"" + str(uuid) + "\",major=" + str(major) + ",minor=" + str(minor) + " " + str(time.time()*1000000)[:16] + "'")
+			os.system("curl -i -XPOST 'http://138.197.134.87:8086/write?db=cengn_11_11_2016' --data-binary 'echo,device=" + str(hostname) + " uuid=\"" + str(uuid) + "\",major=" + str(major) + ",minor=" + str(minor) + " " + str(time.time()*1000000)[:16] + "u'")
 			#file.write(str(time.time()*1000000)[:-2] + ": " + "UUID: " + uuid + ", Major: " + major + ", Minor: " + minor + "\n")
 			#print ("UUID: " + uuid + ", Major: " + major + ", Minor: " + minor)
 		elif packet[ICMP].type == 13: #timestamp-request
-			os.system("curl -i -XPOST 'http://138.197.134.87:8086/write?db=cengn_11_11_2016' --data-binary 'timestamp,device=" + str(hostname) + " ts_ori=" + str(packet[ICMP].ts_ori) + ",ts_rx=" + str(packet[ICMP].ts_rx) + ",ts_tx=" + str(packet[ICMP].ts_tx) + " " + str(time.time()*1000000)[:16] + "'")
+			os.system("curl -i -XPOST 'http://138.197.134.87:8086/write?db=cengn_11_11_2016' --data-binary 'timestamp,device=" + str(hostname) + " ts_ori=" + str(packet[ICMP].ts_ori) + ",ts_rx=" + str(packet[ICMP].ts_rx) + ",ts_tx=" + str(packet[ICMP].ts_tx) + " " + str(time.time()*1000000)[:16] + "u'")
 			#print("ts_ori=" + str(packet[ICMP].ts_ori) + "ms ts_rx=" + str(packet[ICMP].ts_rx) + "ms ts_tx=" + str(packet[ICMP].ts_tx) + "ms")
 			#file.write(str(time.time()*1000000)[:-2] + ": " + "ts_ori=" + str(packet[ICMP].ts_ori) + ", ts_tx=" + str(packet[ICMP].ts_tx) + ", ts_rx=" + str(packet[ICMP].ts_rx) + "\n")
 		#file.close()
