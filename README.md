@@ -42,3 +42,5 @@ As of right now, the current status of the fleet will scan for packets being sen
                                                        
 ```
  
+ ## Resin Setup
+Resin.io offers a service that allows a fleet of devices to be configured and controlled over the internet. The [Resin Documentation] (https://docs.resin.io/introduction/) offers a sufficient explaination for using their service, or you can follow these simple steps:
