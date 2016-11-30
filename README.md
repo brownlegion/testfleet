@@ -41,19 +41,3 @@ As of right now, the current status of the fleet will scan for packets being sen
                                        
                                                        
 ```
- 
-## Resin Setup
-Resin.io offers a service that allows a fleet of devices to be configured and controlled over the internet. The [Resin Documentation] (https://docs.resin.io/introduction/) offers a sufficient explaination for using their service, or you can follow these quick steps:
-
-1. **Project Initialization** - 
-Sign up to Resin.io, then create your first project using any type of device available. From your project dashboard, there will be a link to download your project's image file. This image must be written to an SD card, then inserted into your device. Once the device is booted up and connected to the internet, it should appear on your project's dashboard. Feel free to rename it to something more suitable for your application.
-
-2. **Git Setup** - 
-In order to push your code to your devices, you will need to setup a local Git repository. This repository must include any scripts you would like to run your code in and a Docker file. The Docker file will act as the container that will run your code, and will be setup whenever you make a new push to your project, whereas the code will run whenever the device is powered on. You will also need to add your Resin project as a remote stream, that way a simple `git push resin master` command will upload your repository to the Resin services, install and run the Docker container, then run your code.
-
-3. **Device Configuration** - 
-Any device connected to your project after committing a new change will download, install, then run the new update. You can see the individual behaviour of each device through their device dashboard and the output window. From the device dashboard, it's possible to configure anything by opening up a terminal to the device, or even configuring different environment variables speicific for each device, or even the project as a whole. 
-
-There are many different ways to personalize and configure your project, from the Docker file, to your code, to the device's environment variables, etc. It's recommended that when using Resin for the first time, clone one of the projects found in their [Github Repositories] (https://github.com/resin-io-projects). That way you can modify the Docker file given by adding in modules that you would like to install on your device.
-
-For the [ApBeacon] (INCUDE GITHUB LINK SOON) Resin project, the device runs the Docker container that installs all python modules needed for the scanning procedure, then will clone this repository and run the Bluetooth scanning scripts found in the `scan` folder. The scripts, combined with the environment variables configured for the project, will tell the device how to run.
