@@ -53,3 +53,7 @@ In order to push your code to your devices, you will need to setup a local Git r
 
 3. **Device Configuration** - 
 Any device connected to your project after committing a new change will download, install, then run the new update. You can see the individual behaviour of each device through their device dashboard and the output window. From the device dashboard, it's possible to configure anything by opening up a terminal to the device, or even configuring different environment variables speicific for each device, or even the project as a whole. 
+
+There are many different ways to personalize and configure your project, from the Docker file, to your code, to the device's environment variables, etc. It's recommended that when using Resin for the first time, clone one of the projects found in their [Github Repositories] (https://github.com/resin-io-projects). That way you can modify the Docker file given by adding in modules that you would like to install on your device.
+
+For the [ApBeacon] (INCUDE GITHUB LINK SOON) Resin project, the device runs the Docker container that installs all python modules needed for the scanning procedure, then will clone this repository and run the Bluetooth scanning scripts found in the `scan` folder. The scripts, combined with the environment variables configured for the project, will tell the device how to run.
